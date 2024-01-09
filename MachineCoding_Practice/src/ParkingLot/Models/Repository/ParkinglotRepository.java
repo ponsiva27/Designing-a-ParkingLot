@@ -11,7 +11,7 @@ import ParkingLot.Models.Parkinglot;
 public class ParkinglotRepository {
 	
 	
-	private Map<Long, Parkinglot> parkinglotTable = new TreeMap<>();
+	public static Map<Long, Parkinglot> parkinglotTable = new HashMap<>();
 	
 	
 	public Optional<Parkinglot> getParkinglotBygateNumber(Gate gate) {
@@ -22,12 +22,12 @@ public class ParkinglotRepository {
 //		        String response = db.execute("select * from parking_lots");
 //		        List<Parkinglot> parkingLots = convertToParkingLotList(response);
 		
-		        List<Parkinglot> parkinglotList = (List<Parkinglot>) parkinglotTable.values();
+		        List<Parkinglot> parkinglotList = new ArrayList(parkinglotTable.values());
 		        
 		        for(Parkinglot parkinglots : parkinglotList) {
-		        	List <Gate> gateList = parkinglots.getGates();
-		        		  for(Gate gates : gateList) {
-		        			   if(gates.getId()== gate.getId()) {
+		        	List <Gate> gateList = parkinglots.getGates();  
+		        		  for(Gate gates : gateList) {          // this gate matches with the given gate number then that's the answer for parking lot
+		        			   if(gates.getGateNumber()== gate.getGateNumber()) { 
 		        				   return Optional.of(parkinglots);
 		        			   }
 		        		 }

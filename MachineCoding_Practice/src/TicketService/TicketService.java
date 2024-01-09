@@ -40,6 +40,7 @@ public class TicketService {
 		//1. Create a ticket.
 		Ticket ticket = new Ticket();
 		
+		
 		//2. Fill the attributes of ticket.
 		
 
@@ -73,11 +74,13 @@ public class TicketService {
 				 
 				 //save this data to the DB
 			savedVehicle = vehicleRepository.saveVehicle(vehicle);
+			System.out.println("DB Saved Vehicle "+ savedVehicle);
 			
 				
 				 
 			 } else {
 				 savedVehicle = vehicleOptional.get();
+				 System.out.println("vehicle already exist");
 				 
 			 }
 			 
@@ -96,6 +99,11 @@ public class TicketService {
 			
 		// 7a. save the ticket to the DB.
 			ticket = ticketRepository.saveTicket(ticket);
+			
+			
+			
+			ticket.setTicketNumber("TicketNumber"+ ticket.getId());
+			
 			  
 			
 			
