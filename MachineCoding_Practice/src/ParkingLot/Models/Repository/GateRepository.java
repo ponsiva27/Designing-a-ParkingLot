@@ -8,7 +8,7 @@ import ParkingLot.Models.Gate;
 
 public class GateRepository {
 	
-	private Map<Long, Gate> gatetable = new TreeMap<>();
+	public static  Map<Long, Gate> gatetable = new TreeMap<>();
 	
 	public Optional<Gate> getGateNumber(long gateNumber) {
 		// String response = db.exuecte("START * FROM GATE WHERE gateNumber = gateNumber");
